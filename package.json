@@ -10,12 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-pdf/renderer": "^3.1.9",
     "@turf/turf": "^6.5.0",
     "axios": "^1.4.0",
     "leaflet": "^1.9.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-leaflet": "^4.2.1"
+    "react-leaflet": "^4.2.1",
+    "react-loading-skeleton": "^3.3.1",
+    "react-redux": "^8.0.5",
+    "redux": "^4.2.1",
+    "underscore": "^1.13.6"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
