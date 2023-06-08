@@ -19,6 +19,8 @@ Font.register({
 	src: RobotoFontBold,
 });
 function PDFFile({ data }) {
+	const thongTinChung = JSON.parse(data.ThongTinChung);
+	const dccb = JSON.parse(data.DCCB);
 	const styles = StyleSheet.create({
 		body: {
 			paddingTop: 40,
@@ -145,36 +147,37 @@ function PDFFile({ data }) {
 							fontFamily: "Roboto-Bold",
 						}}
 					>
-						{handleTenDoAn(JSON.parse(data.ThongTinChung).dsttdoan)}
+						{handleTenDoAn(thongTinChung.dsttdoan)}
 					</Text>
 					" đã được UBND Thành phố Hồ Chí Minh phê duyệt tại Quyết định số{" "}
-					{handleSoQD(JSON.parse(data.ThongTinChung).dsttdoan)} ngày{" "}
-					{handleNgayDuyet(JSON.parse(data.ThongTinChung).dsttdoan)}
+					{handleSoQD(thongTinChung.dsttdoan)} ngày{" "}
+					{handleNgayDuyet(thongTinChung.dsttdoan)}
 				</Text>
-				<Text
-					style={{
-						paddingTop: 2,
-						paddingLeft: 20,
-						fontSize: 13,
-						textAlign: "justify",
-						fontFamily: "Roboto",
-					}}
-				>
-					- Đồ án "
+				{!dccb.length ? null : (
 					<Text
 						style={{
+							paddingTop: 2,
+							paddingLeft: 20,
 							fontSize: 13,
 							textAlign: "justify",
-							fontFamily: "Roboto-Bold",
+							fontFamily: "Roboto",
 						}}
 					>
-						{handleTenDCCB(JSON.parse(data.DCCB))}
+						- Đồ án "
+						<Text
+							style={{
+								fontSize: 13,
+								textAlign: "justify",
+								fontFamily: "Roboto-Bold",
+							}}
+						>
+							{handleTenDCCB(dccb)}
+						</Text>
+						" đã được UBND Thành phố Hồ Chí Minh phê duyệt tại Quyết định số{" "}
+						{handleSoQDDCCB(dccb)} ngày {handleNgayDuyetDCCB(dccb)}
 					</Text>
-					" đã được UBND Thành phố Hồ Chí Minh phê duyệt tại Quyết định số{" "}
-					{handleSoQDDCCB(JSON.parse(data.DCCB))} ngày{" "}
-					{handleNgayDuyetDCCB(JSON.parse(data.DCCB))}
-				</Text>
-				<Text style={styles.heading}>I. Thông tin quy hoạch sử dụng đất</Text>
+				)}
+				<Text style={styles.heading}>II. Thông tin quy hoạch sử dụng đất</Text>
 				<Image
 					src={image}
 					style={{

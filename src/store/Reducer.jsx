@@ -1,59 +1,81 @@
 import {
+	SET_CONTROL_OPACITY,
 	SET_DATA,
-	SET_DATA_ARRAY_KHSDD,
-	SET_DATA_ARRAY_QHPK,
-	SET_DATA_ARRAY_QHSDD,
+	SET_DATA_BDG,
+	SET_DATA_CNSDD,
+	SET_DATA_DCCB,
+	SET_DATA_DCCB_Of_BDG,
+	SET_DATA_GEOJSON,
+	SET_DATA_GEOJSON_CNSDD,
 	SET_DATA_GEOJSON_DCCB,
-	SET_DATA_GEOJSON_FUNC,
+	SET_DATA_GEOJSON_DCCB_Of_BDG,
 	SET_DATA_GEOJSON_QHCT,
-	SET_DATA_INFO_DCCB,
-	SET_DATA_INFO_FUNC,
-	SET_DATA_INFO_QHCT,
-	SET_DATA_LOCATION,
+	SET_DATA_GEOJSON_RANH_Of_BDG,
+	SET_DATA_KHSDD,
+	SET_DATA_QHCT,
+	SET_DATA_QHPK,
+	SET_DATA_QHSDD,
+	SET_DISPLAY_BDG,
+	SET_DISPLAY_CNSDD,
+	SET_DISPLAY_DATA_INFORMATION,
+	SET_DISPLAY_DCCB,
+	SET_DISPLAY_DCCB_Of_BDG,
+	SET_DISPLAY_FULL_MAP_BDG,
+	SET_DISPLAY_KHSDD,
+	SET_DISPLAY_QHCT,
+	SET_DISPLAY_QHPK,
+	SET_DISPLAY_QHSDD,
+	SET_DISPLAY_SEARCH,
+	SET_DISPLAY_STATELLITE,
+	SET_DISPLAY_STREET,
+	SET_DISPLAY_TABLE_LAYERS,
+	SET_FILE_COORDS,
 	SET_IS_LOADING,
-	SET_MARKED_POSITION,
-	SET_SHOW_INFO,
-	SET_SHOW_INFO_DCCB,
-	SET_SHOW_INFO_FUNCTION,
-	SET_SHOW_INFO_QHCT,
-	SET_SHOW_KHSDD,
-	SET_SHOW_QHPK,
-	SET_SHOW_QHSDD,
 } from "./Constants";
-
 const initState = {
 	//Data:---------------------------------------------------
 	center: { lat: 10.829829938889858, lng: 106.76179012254107 },
 	data: {},
+	displayDataInformation: false,
 	isLoading: false,
-	//--------------------------------------------------------
-	dataLocation: [],
-	showInfo: false,
-	markedPosition: {
-		latitude: 0,
-		longitude: 0,
-	},
-	//Function Information:
-	showInfoFunc: false,
-	dataGeoJsonFunc: [],
-	dataInfoFunc: {},
+	controlOpacity: 1,
+	displayTableLayers: false,
+	displayStreet: true,
+	displayStatellite: false,
+	dataGeoJson: [],
+	displaySearch: false,
+	fileCoords: [],
+	//CNSDD:
+	displayCNSDD: false,
+	dataGeoJsonCNSDD: [],
+	dataCNSDD: {},
 	//QHPK:
-	dataArrayQHPK: [],
-	showQHPK: true,
+	dataQHPK: [],
+	displayQHPK: true,
 	//QHSDD:
-	dataArrayQHSDD: [],
-	showQHSDD: false,
+	dataQHSDD: [],
+	displayQHSDD: false,
+	//BDG:
+	dataBDG: [],
+	displayBDG: false,
 	//KHSDD:
-	dataArrayKHSDD: [],
-	showKHSDD: false,
+	dataKHSDD: [],
+	displayKHSDD: false,
 	//QHCT:
 	dataGeoJsonQHCT: [],
-	dataInfoQHCT: {},
-	showInfoQHCT: false,
+	dataQHCT: {},
+	displayQHCT: false,
 	//DCCB:
 	dataGeoJsonDCCB: [],
-	dataInfoDCCB: {},
-	showInfoDCCB: false,
+	dataDCCB: {},
+	displayDCCB: false,
+	//DCCB of BDG:
+	dataGeoJsonDCCBofBDG: [],
+	dataDCCBofBDG: {},
+	displayDCCBofBDG: false,
+	//Ranh of BDG:
+	dataGeoJsonRanhOfBDG: [],
+	displayFullMapBDG: false,
 };
 function Reducer(state, action) {
 	switch (action.type) {
@@ -63,76 +85,139 @@ function Reducer(state, action) {
 				...state,
 				data: action.payload,
 			};
+		case SET_DISPLAY_DATA_INFORMATION:
+			return {
+				...state,
+				displayDataInformation: action.payload,
+			};
 		case SET_IS_LOADING:
 			return {
 				...state,
 				isLoading: action.payload,
 			};
-
-		case SET_DATA_LOCATION:
+		case SET_CONTROL_OPACITY:
 			return {
 				...state,
-				dataLocation: action.payload,
+				controlOpacity: action.payload,
 			};
-
-		case SET_SHOW_INFO:
+		case SET_DISPLAY_TABLE_LAYERS:
 			return {
 				...state,
-				showInfo: action.payload,
+				displayTableLayers: action.payload,
 			};
-		case SET_MARKED_POSITION:
+		case SET_DISPLAY_STREET:
 			return {
 				...state,
-				markedPosition: action.payload,
+				displayStatellite: false,
+				displayStreet: action.payload,
 			};
-		//Function Information:-----------------
-		case SET_DATA_GEOJSON_FUNC:
+		case SET_DISPLAY_STATELLITE:
 			return {
 				...state,
-				dataGeoJsonFunc: action.payload,
+				displayStreet: false,
+				displayStatellite: action.payload,
 			};
-		case SET_DATA_INFO_FUNC:
+		case SET_DATA_GEOJSON:
 			return {
 				...state,
-				dataInfoFunc: action.payload,
+				dataGeoJson: action.payload,
 			};
-		case SET_SHOW_INFO_FUNCTION:
+		case SET_DISPLAY_SEARCH:
 			return {
 				...state,
-				showInfoFunc: action.payload,
+				displaySearch: action.payload,
+			};
+		case SET_FILE_COORDS:
+			return {
+				...state,
+				fileCoords: action.payload,
+			};
+		//CNSDD:-----------------
+		case SET_DATA_GEOJSON_CNSDD:
+			return {
+				...state,
+				dataGeoJsonCNSDD: action.payload,
+			};
+		case SET_DATA_CNSDD:
+			return {
+				...state,
+				dataCNSDD: action.payload,
+			};
+		case SET_DISPLAY_CNSDD:
+			return {
+				...state,
+				displayCNSDD: action.payload,
 			};
 		//QHPK:---------------------------------
-		case SET_DATA_ARRAY_QHPK:
+		case SET_DATA_QHPK:
 			return {
 				...state,
-				dataArrayQHPK: action.payload,
+				dataQHSDD: [],
+				dataKHSDD: [],
+				dataQHPK: action.payload,
 			};
-		case SET_SHOW_QHPK:
+		case SET_DISPLAY_QHPK:
 			return {
 				...state,
-				showQHPK: action.payload,
+				dataGeoJsonDCCBofBDG: [],
+				dataGeoJsonRanhOfBDG: [],
+				displayBDG: false,
+				displayQHSDD: false,
+				displayKHSDD: false,
+				displayQHPK: action.payload,
+			};
+		//BDG:---------------------------------
+		case SET_DATA_BDG:
+			return {
+				...state,
+				dataQHPK: [],
+				dataQHSDD: [],
+				dataKHSDD: [],
+				dataBDG: action.payload,
+			};
+		case SET_DISPLAY_BDG:
+			return {
+				...state,
+				displayQHPK: false,
+				displayQHSDD: false,
+				displayKHSDD: false,
+				displayBDG: action.payload,
 			};
 		//QHSDD:---------------------------------
-		case SET_DATA_ARRAY_QHSDD:
+		case SET_DATA_QHSDD:
 			return {
 				...state,
-				dataArrayQHSDD: action.payload,
+				dataQHPK: [],
+				dataKHSDD: [],
+				dataQHSDD: action.payload,
 			};
-		case SET_SHOW_QHSDD:
+		case SET_DISPLAY_QHSDD:
 			return {
 				...state,
-				showQHSDD: action.payload,
+				dataGeoJsonDCCBofBDG: [],
+				dataGeoJsonRanhOfBDG: [],
+				displayQHPK: false,
+				displayBDG: false,
+				displayKHSDD: false,
+				displayQHSDD: action.payload,
 			};
 		//QHSDD:---------------------------------
-		case SET_DATA_ARRAY_KHSDD:
+		case SET_DATA_KHSDD:
 			return {
 				...state,
-				dataArrayKHSDD: action.payload,
+				dataQHPK: [],
+				dataQHSDD: [],
+				dataKHSDD: action.payload,
 			};
-		case SET_SHOW_KHSDD:
+		case SET_DISPLAY_KHSDD:
 			return {
 				...state,
-				showKHSDD: action.payload,
+				dataGeoJsonDCCBofBDG: [],
+				dataGeoJsonRanhOfBDG: [],
+				displayQHPK: false,
+				displayQHSDD: false,
+				displayBDG: false,
+				displayKHSDD: action.payload,
 			};
 		//QHCT:---------------------------------
 		case SET_DATA_GEOJSON_QHCT:
@@ -140,15 +225,15 @@ function Reducer(state, action) {
 				...state,
 				dataGeoJsonQHCT: action.payload,
 			};
-		case SET_DATA_INFO_QHCT:
+		case SET_DATA_QHCT:
 			return {
 				...state,
-				dataInfoQHCT: action.payload,
+				dataQHCT: action.payload,
 			};
-		case SET_SHOW_INFO_QHCT:
+		case SET_DISPLAY_QHCT:
 			return {
 				...state,
-				showInfoQHCT: action.payload,
+				displayQHCT: action.payload,
 			};
 		//DCCB:---------------------------------
 		case SET_DATA_GEOJSON_DCCB:
@@ -156,15 +241,45 @@ function Reducer(state, action) {
 				...state,
 				dataGeoJsonDCCB: action.payload,
 			};
-		case SET_DATA_INFO_DCCB:
+		case SET_DATA_DCCB:
 			return {
 				...state,
-				dataInfoDCCB: action.payload,
+				dataDCCB: action.payload,
 			};
-		case SET_SHOW_INFO_DCCB:
+		case SET_DISPLAY_DCCB:
 			return {
 				...state,
-				showInfoDCCB: action.payload,
+				displayDCCB: action.payload,
+			};
+		//DCCB of BDG:---------------------------------
+		case SET_DATA_GEOJSON_DCCB_Of_BDG:
+			return {
+				...state,
+				dataGeoJsonDCCBofBDG: action.payload,
+			};
+		case SET_DATA_DCCB_Of_BDG:
+			return {
+				...state,
+				dataDCCBofBDG: action.payload,
+			};
+		case SET_DISPLAY_DCCB_Of_BDG:
+			return {
+				...state,
+				dataGeoJsonRanhOfBDG: [],
+				dataGeoJsonDCCBofBDG: [],
+				dataDCCBofBDG: {},
+				displayDCCBofBDG: action.payload,
+			};
+		//DCCB of BDG:---------------------------------
+		case SET_DATA_GEOJSON_RANH_Of_BDG:
+			return {
+				...state,
+				dataGeoJsonRanhOfBDG: action.payload,
+			};
+		case SET_DISPLAY_FULL_MAP_BDG:
+			return {
+				...state,
+				displayFullMapBDG: action.payload,
 			};
 		default:
 			throw new Error("Invalid Actions!");

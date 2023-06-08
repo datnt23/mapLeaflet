@@ -1,84 +1,125 @@
 import {
+	SET_CONTROL_OPACITY,
 	SET_DATA,
-	SET_DATA_ARRAY_KHSDD,
-	SET_DATA_ARRAY_QHPK,
-	SET_DATA_ARRAY_QHSDD,
+	SET_DATA_BDG,
+	SET_DATA_KHSDD,
+	SET_DATA_QHPK,
+	SET_DATA_QHSDD,
+	SET_DATA_GEOJSON,
+	SET_DATA_GEOJSON_CNSDD,
 	SET_DATA_GEOJSON_DCCB,
-	SET_DATA_GEOJSON_FUNC,
+	SET_DATA_GEOJSON_DCCB_Of_BDG,
 	SET_DATA_GEOJSON_QHCT,
-	SET_DATA_INFO_DCCB,
-	SET_DATA_INFO_FUNC,
-	SET_DATA_INFO_QHCT,
-	SET_DATA_LOCATION,
+	SET_DATA_GEOJSON_RANH_Of_BDG,
+	SET_DISPLAY_BDG,
+	SET_DISPLAY_CNSDD,
+	SET_DISPLAY_DATA_INFORMATION,
+	SET_DISPLAY_DCCB_Of_BDG,
+	SET_DISPLAY_FULL_MAP_BDG,
+	SET_DISPLAY_KHSDD,
+	SET_DISPLAY_QHPK,
+	SET_DISPLAY_QHSDD,
+	SET_DISPLAY_SEARCH,
+	SET_DISPLAY_STATELLITE,
+	SET_DISPLAY_STREET,
+	SET_DISPLAY_TABLE_LAYERS,
+	SET_FILE_COORDS,
 	SET_IS_LOADING,
-	SET_MARKED_POSITION,
-	SET_SHOW_INFO,
-	SET_SHOW_INFO_DCCB,
-	SET_SHOW_INFO_FUNCTION,
-	SET_SHOW_INFO_QHCT,
-	SET_SHOW_KHSDD,
-	SET_SHOW_QHPK,
-	SET_SHOW_QHSDD,
+	SET_DISPLAY_QHCT,
+	SET_DISPLAY_DCCB,
+	SET_DATA_DCCB_Of_BDG,
+	SET_DATA_DCCB,
+	SET_DATA_QHCT,
+	SET_DATA_CNSDD,
 } from "./Constants";
 //-----------------------Set Data---------------------------//
 export const setData = (payload) => ({
 	type: SET_DATA,
 	payload,
 });
+export const setDisplayDataInformation = (payload) => ({
+	type: SET_DISPLAY_DATA_INFORMATION,
+	payload,
+});
+export const setDataGeoJson = (payload) => ({
+	type: SET_DATA_GEOJSON,
+	payload,
+});
 export const setIsLoading = (payload) => ({
 	type: SET_IS_LOADING,
 	payload,
 });
-export const setDataLocation = (payload) => ({
-	type: SET_DATA_LOCATION,
+export const setControlOpacity = (payload) => ({
+	type: SET_CONTROL_OPACITY,
 	payload,
 });
-export const setShowInfo = (payload) => ({
-	type: SET_SHOW_INFO,
+export const setDisplayTableLayers = (payload) => ({
+	type: SET_DISPLAY_TABLE_LAYERS,
 	payload,
 });
-export const setMarkedPosition = (payload) => ({
-	type: SET_MARKED_POSITION,
+export const setDisplayStreet = (payload) => ({
+	type: SET_DISPLAY_STREET,
 	payload,
 });
-//Function Information:-------------------------
-export const setDataGeoJsonFunc = (payload) => ({
-	type: SET_DATA_GEOJSON_FUNC,
+export const setDisplayStatellite = (payload) => ({
+	type: SET_DISPLAY_STATELLITE,
 	payload,
 });
-export const setDataInfoFunc = (payload) => ({
-	type: SET_DATA_INFO_FUNC,
+export const setDisplaySearch = (payload) => ({
+	type: SET_DISPLAY_SEARCH,
 	payload,
 });
-export const setShowInfoFunction = (payload) => ({
-	type: SET_SHOW_INFO_FUNCTION,
+export const setFileCoords = (payload) => ({
+	type: SET_FILE_COORDS,
+	payload,
+});
+//CNSDD:-------------------------
+export const setDataGeoJsonCNSDD = (payload) => ({
+	type: SET_DATA_GEOJSON_CNSDD,
+	payload,
+});
+export const setDataCNSDD = (payload) => ({
+	type: SET_DATA_CNSDD,
+	payload,
+});
+export const setDisplayCNSDD = (payload) => ({
+	type: SET_DISPLAY_CNSDD,
 	payload,
 });
 //QHPK:-------------------------------------------
-export const setDataArrayQHPK = (payload) => ({
-	type: SET_DATA_ARRAY_QHPK,
+export const setDataQHPK = (payload) => ({
+	type: SET_DATA_QHPK,
 	payload,
 });
-export const setShowQHPK = (payload) => ({
-	type: SET_SHOW_QHPK,
+export const setDisplayQHPK = (payload) => ({
+	type: SET_DISPLAY_QHPK,
 	payload,
 });
 //QHSDD:-------------------------------------------
-export const setDataArrayQHSDD = (payload) => ({
-	type: SET_DATA_ARRAY_QHSDD,
+export const setDataQHSDD = (payload) => ({
+	type: SET_DATA_QHSDD,
 	payload,
 });
-export const setShowQHSDD = (payload) => ({
-	type: SET_SHOW_QHSDD,
+export const setDisplayQHSDD = (payload) => ({
+	type: SET_DISPLAY_QHSDD,
 	payload,
 });
 //QHPK:-------------------------------------------
-export const setDataArrayKHSDD = (payload) => ({
-	type: SET_DATA_ARRAY_KHSDD,
+export const setDataKHSDD = (payload) => ({
+	type: SET_DATA_KHSDD,
 	payload,
 });
-export const setShowKHSDD = (payload) => ({
-	type: SET_SHOW_KHSDD,
+export const setDisplayKHSDD = (payload) => ({
+	type: SET_DISPLAY_KHSDD,
+	payload,
+});
+//QHPK:-------------------------------------------
+export const setDataBDG = (payload) => ({
+	type: SET_DATA_BDG,
+	payload,
+});
+export const setDisplayBDG = (payload) => ({
+	type: SET_DISPLAY_BDG,
 	payload,
 });
 //QHCT:-----------------------------------------
@@ -86,12 +127,12 @@ export const setDataGeoJsonQHCT = (payload) => ({
 	type: SET_DATA_GEOJSON_QHCT,
 	payload,
 });
-export const setDataInfoQHCT = (payload) => ({
-	type: SET_DATA_INFO_QHCT,
+export const setDataQHCT = (payload) => ({
+	type: SET_DATA_QHCT,
 	payload,
 });
-export const setShowInfoQHCT = (payload) => ({
-	type: SET_SHOW_INFO_QHCT,
+export const setDisplayQHCT = (payload) => ({
+	type: SET_DISPLAY_QHCT,
 	payload,
 });
 //DCCB:-------------------------------------------
@@ -99,11 +140,33 @@ export const setDataGeoJsonDCCB = (payload) => ({
 	type: SET_DATA_GEOJSON_DCCB,
 	payload,
 });
-export const setDataInfoDCCB = (payload) => ({
-	type: SET_DATA_INFO_DCCB,
+export const setDataDCCB = (payload) => ({
+	type: SET_DATA_DCCB,
 	payload,
 });
-export const setShowInfoDCCB = (payload) => ({
-	type: SET_SHOW_INFO_DCCB,
+export const setDisplayDCCB = (payload) => ({
+	type: SET_DISPLAY_DCCB,
+	payload,
+});
+//DCCB of BDG:-------------------------------------------
+export const setDataGeoJsonDCCBofBDG = (payload) => ({
+	type: SET_DATA_GEOJSON_DCCB_Of_BDG,
+	payload,
+});
+export const setDataDCCBofBDG = (payload) => ({
+	type: SET_DATA_DCCB_Of_BDG,
+	payload,
+});
+export const setDisplayDCCBofBDG = (payload) => ({
+	type: SET_DISPLAY_DCCB_Of_BDG,
+	payload,
+});
+//Ranh of BDG:-------------------------------------------
+export const setDataGeoJsonRanhOfBDG = (payload) => ({
+	type: SET_DATA_GEOJSON_RANH_Of_BDG,
+	payload,
+});
+export const setDisplayFullMapBDG = (payload) => ({
+	type: SET_DISPLAY_FULL_MAP_BDG,
 	payload,
 });
